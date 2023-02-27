@@ -15,61 +15,73 @@ button{height:30px; width:30px;}
  <table align="center" height=200 width=150>
 	
 	<tr>
-	 <td style="text-align: right;" colspan=4><p id="#result">0</p></td>
+	 <td style="text-align: right;" colspan=4>
+		<p id="result">0</p>
+	 </td>
 	</tr>
 	<tr>
-	 <td><button onclick="clear()">CE</button></td>
-	 <td><button onclick="erase()"><-</button></td>
-	 <td><button onclick="write(this.innerHTML)">(</button></td>
-	 <td><button>)</button></td>
+	 <td><button onclick="clearAll()">CE</button></td>
+	 <td><button onclick="eraseLast()"><-</button></td>
+	 <td><button onclick="funWrite(this.innerHTML)">(</button></td>
+	 <td><button onclick="funWrite(this.innerHTML)">)</button></td>
 	</tr>
 	<tr>
-	 <td><button>7</button></td>
-	 <td><button>8</button></td>
-	 <td><button>9</button></td>
-	 <td><button>*</button></td>
+	 <td><button onclick="funWrite(this.innerHTML)">7</button></td>
+	 <td><button onclick="funWrite(this.innerHTML)">8</button></td>
+	 <td><button onclick="funWrite(this.innerHTML)">9</button></td>
+	 <td><button onclick="funWrite(this.innerHTML)">*</button></td>
 	</tr>
 	<tr>
-	 <td><button>4</button></td>
-	 <td><button>5</button></td>
-	 <td><button>6</button></td>
-	 <td><button>/</button></td>
+	 <td><button onclick="funWrite(this.innerHTML)">4</button></td>
+	 <td><button onclick="funWrite(this.innerHTML)">5</button></td>
+	 <td><button onclick="funWrite(this.innerHTML)">6</button></td>
+	 <td><button onclick="funWrite(this.innerHTML)">/</button></td>
 	</tr>
 	<tr>
-	 <td><button>1</button></td>
-	 <td><button>2</button></td>
-	 <td><button>3</button></td>
-	 <td><button>+</button></td>
+	 <td><button onclick="funWrite(this.innerHTML)">1</button></td>
+	 <td><button onclick="funWrite(this.innerHTML)">2</button></td>
+	 <td><button onclick="funWrite(this.innerHTML)">3</button></td>
+	 <td><button onclick="funWrite(this.innerHTML)">+</button></td>
 	</tr>
 	<tr>
-	 <td><button>0</button></td>
-	 <td><button>,</button></td>
-	 <td><button>-</button></td>
-	 <td><button>=</button></td>
+	 <td><button onclick="funWrite(this.innerHTML)">0</button></td>
+	 <td><button onclick="funWrite(this.innerHTML)">,</button></td>
+	 <td><button onclick="funWrite(this.innerHTML)">-</button></td>
+	 <td><button onclick="getResult()"> = </button></td>
 	</tr>
 
  </table>
 
  <script>
 
-	function write(char){
+<!-- Necesito eliminar ceros a la izquierda, evitar dobles comas y símbolos consecutivos-->
 
-		let resultText = document.getElementById("result").innerHTML
+	function funWrite(charToAdd){
 
-		resultText = resultText + char
+		let resultP = document.getElementById("result")
+
+		resultP.innerHTML = resultP.innerHTML+charToAdd
 
 	}
 
-	function erase(){
+	function eraseLast(){
 
-		let resultText = document.getElementById("result").innerHTML
-		
-		resultText = resultText.slice(0,-1)
+		document.getElementById("result").innerHTML.slice(0,-1)
+
 	}
 
-	function clear(){
+	function clearAll(){
 
 		document.getElementById("result").innerHTML=0
+	}
+
+	function getResult(){
+
+		let resultP = document.getElementById("result")
+		
+		let resultFloat = eval(resultP.innerHTML.toString())
+
+		resultP.innerHTML = resultFloat
 	}
 	
  </script>
